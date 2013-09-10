@@ -29,5 +29,5 @@ proguard/
 .idea/
 
 # Other - Add arbitrary files here you want to ignore
-Thumbs.db
+*Thumbs.db
 *.vpp~*
