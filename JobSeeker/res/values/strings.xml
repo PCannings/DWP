@@ -6,5 +6,35 @@
     <string name="search">Search</string>
     <string name="diary">Diary</string>
     <string name="banner_desc">Job Seeker Home Page</string>
+    <string name="title_activity_search">Job Search Page</string>
+    <string name="search_hint">Search Jobs&#8230;</string>
+    <string name="no_results_text">No Job Results&#8230;</string>
+    <string name="title_activity_results">Job Results</string>
+    <string name="search_title">Title: </string>
+    <string name="search_type">Type: </string>
+    <string name="search_employer">Employer: </string>
+    <string name="search_industry">Industry: </string>
+    <string name="search_location">Location: </string>
+    <string name="search_hours">Hours: </string>
+    
+    <string-array name="types">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    
+    <string-array name="industries">
+        <item>IT</item>
+        <item>Catering</item>
+        <item>Retail</item>
+        <item>Sales/Marketing</item>
+        <item>Oil/Gas</item>
+    </string-array>
+    
+    <string-array name="hours">
+        <item>Up To 16</item>
+        <item>16 &#8211; 24</item>
+        <item>Greater Than 24</item>
+    </string-array>
     
 </resources>
