@@ -1,0 +1,338 @@
+﻿body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../Login_Screen_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:119px;
+    top:24px;
+    width:510px;
+    height:618px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:516px;
+    height:624px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:301px;
+    width:506px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../Login_Screen_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:119px;
+    top:24px;
+    width:510px;
+    height:228px;
+}
+
+#u2_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:516px;
+    height:234px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:106px;
+    width:506px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../Login_Screen_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:119px;
+    top:235px;
+    width:510px;
+    height:17px;
+}
+
+#u4_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:516px;
+    height:23px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:506px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6 {
+    position:absolute;
+    left:119px;
+    top:24px;
+    width:448px;
+    height:83px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u7_normal {
+    background-image: url('../Login_Screen_files/u7_normal.png');
+}
+
+.u7_container {
+    position:absolute;
+    left:146px;
+    top:280px;
+    width:456px;
+    height:331px;
+}
+
+#u7_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:462px;
+    height:337px;
+}
+
+.u8 {
+    position:absolute;
+    left:2px;
+    top:158px;
+    width:452px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u9_normal {
+    background-image: url('../Login_Screen_files/u9_normal.png');
+}
+
+.u9_container {
+    position:absolute;
+    left:286px;
+    top:510px;
+    width:189px;
+    height:81px;
+}
+
+#u9_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:195px;
+    height:87px;
+}
+
+.u10 {
+    position:absolute;
+    left:2px;
+    top:20px;
+    width:185px;
+    height:42px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u11_image_sketch {
+    background-image: url('../Login_Screen_files/u11_image_sketch.png');
+    position:absolute;
+    left:340px;
+    top:300px;
+    width:229px;
+    height:31px;
+}
+
+.u11 {
+    position:absolute;
+    left:343px;
+    top:303px;
+    width:223px;
+    height:25px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u12 {
+    position:absolute;
+    left:157px;
+    top:304px;
+    width:186px;
+    height:24px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13 {
+    position:absolute;
+    left:157px;
+    top:341px;
+    width:150px;
+    height:24px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u14_image_sketch {
+    background-image: url('../Login_Screen_files/u14_image_sketch.png');
+    position:absolute;
+    left:341px;
+    top:335px;
+    width:229px;
+    height:31px;
+}
+
+.u14 {
+    position:absolute;
+    left:344px;
+    top:338px;
+    width:223px;
+    height:25px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u15_normal {
+    background-image: url('../Login_Screen_files/u4_normal.png');
+}
+
+.u15_container {
+    position:absolute;
+    left:119px;
+    top:24px;
+    width:510px;
+    height:17px;
+}
+
+#u15_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:516px;
+    height:23px;
+}
+
+.u16 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:506px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u17 {
+    position:absolute;
+    left:119px;
+    top:163px;
+    width:454px;
+    height:83px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
