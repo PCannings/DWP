@@ -3,6 +3,8 @@
 
     <string name="app_name">JobSeeker</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-
+    <string name="search">Search</string>
+    <string name="diary">Diary</string>
+    <string name="banner_desc">Job Seeker Home Page</string>
+    
 </resources>
