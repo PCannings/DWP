@@ -11,7 +11,7 @@ $axure.eventManager.click('u12', function(e) {
 
 if (true) {
 
-	self.location.href=$axure.globalVariableProvider.getLinkUrl('Diary.html');
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('Diary_Screen.html');
 
 }
 });
@@ -22,7 +22,7 @@ $axure.eventManager.click('u14', function(e) {
 
 if (true) {
 
-	self.location.href=$axure.globalVariableProvider.getLinkUrl('Search_Jobs.html');
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('Search_Jobs_Screen.html');
 
 }
 });
