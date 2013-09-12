@@ -51,7 +51,7 @@ public class SearchActivity extends Activity
 				// TODO: Go to server to scrape all sources	
 				// TODO: ASyncTask progress bar
 				
-			    // Check for internet access
+			    // Check for Internet access
 //                if (!hasInternetConnectivity())
 //                {
 //                    Toast.makeText(SearchActivity.this, "Internet Access Required...", Toast.LENGTH_LONG).show();
