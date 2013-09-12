@@ -19,16 +19,18 @@
     
     <!-- "Search" Button -->
     <Button
-        android:id="@+id/search_button"
+        android:id="@+id/search_activity_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/main_page_padding"
         android:text="@string/search" />
     
     <!-- "Diary" Button -->
     <Button
         android:id="@+id/diary_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content"        
+        android:layout_margin="@dimen/main_page_padding"
         android:text="@string/diary" />
 
 </LinearLayout>

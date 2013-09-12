@@ -2,6 +2,7 @@ package itp.team1.jobseeker;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -22,9 +23,9 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
 		
-		// Get buttons
+		// Get UI elements
 		banner 		 = (ImageView) findViewById(R.id.banner);
-		searchButton = (Button) findViewById(R.id.search_button);
+		searchButton = (Button) findViewById(R.id.search_activity_button);
 		diaryButton  = (Button) findViewById(R.id.diary_button);
 
 		
@@ -44,8 +45,8 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v) 
 			{
-				Toast.makeText(MainActivity.this, "Search clicked", Toast.LENGTH_SHORT).show();
-
+				// Go to "job search" page
+				startActivity(new Intent(MainActivity.this, SearchActivity.class));
 			}
 		});
 		
@@ -56,6 +57,9 @@ public class MainActivity extends Activity
 			public void onClick(View v) 
 			{
 				Toast.makeText(MainActivity.this, "Diary clicked", Toast.LENGTH_SHORT).show();
+				// Go to "job search" page
+				//startActivity(new Intent(MainActivity.this, DiaryActivity.class));
+
 			}
 		});
 	}
