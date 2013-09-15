@@ -9,15 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.InputStreamBody;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HTTP;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -120,12 +124,22 @@ public class SearchActivity extends Activity
 	private static HttpPost createPostMessage(/*Search searchParameters*/) 
 	{
 		HttpPost postRequest = new HttpPost(JOB_SEEKER_SERVER);
-		
-		HttpParams params = new BasicHttpParams();
-		HttpConnectionParams.setConnectionTimeout(params, 10000);
-		HttpConnectionParams.setSoTimeout(params, 30000);
-		postRequest.setParams(params);
-		
+
+		try
+		{
+		    List<NameValuePair> params = new ArrayList<NameValuePair>();
+		    // TODO: SEARCH Parameters
+            params.add(new BasicNameValuePair("user", "kris"));
+            params.add(new BasicNameValuePair("pass", "xyz"));
+            UrlEncodedFormEntity ent = new UrlEncodedFormEntity(params,HTTP.UTF_8);
+            postRequest.setEntity(ent);
+		}
+		catch (IOException e)
+		{
+			System.out.println("IOException: Can't send POST");
+		}
+            
+            
 		// Specify Content and Content-Type parameters for POST request
 		InputStream dataIn = new StringBufferInputStream("Test Data");// TODO: searchParameters
 		@SuppressWarnings("deprecation")
