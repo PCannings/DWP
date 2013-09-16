@@ -1,0 +1,44 @@
+monday afternoon meeting, janet and john.
+
+prep for next week, 9 am monday, 10 mins privately, or at least 2 teams together.
+
+send to annalu, advise we were waiting on approval, due to miscommunication, no response was coming, we pursued this on mondays meeting, 
+and realised the break down in communications.
+
+request: module review, 4th year c.v. produce a c.v. by the end of the month, receive feedback on it. 
+
+alot of hci methods, maybe too many, interviews/observations/ 2 seperate methods.
+focus group?
+
+
+how would you use the a/b tests? what data would you get from these?
+
+A/B ordering effect...
+
+split groups via email?
+
+Drop in centre(wrong), User centre.
+
+exclusion under 18 - over 65.
+
+section 3, less ambitious.
+
+pick one research method.
+
+section 6, feedback, debriefing. people want to know...will invite people to get feedback or what impact their participation had.
+
+eca, no ethical aproval require for clients.
+
+where to email to.
+
+        <com.google.android.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+		android:enabled="true"
+		android:clickable="true"
+		android:apiKey="AIzaSyCNObYbIAaQBw3Bl5cIQyKbw_Rp6XcLNi4"
+        >
+        
+    </com.google.android.maps.MapView>
+
