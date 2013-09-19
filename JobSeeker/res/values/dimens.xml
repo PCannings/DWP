@@ -5,4 +5,9 @@
 	<dimen name="grid_spacing">20dp</dimen>
 	<dimen name="main_page_padding">50dp</dimen>
 	
+	 <dimen name="slidingmenu_offset">60dp</dimen>
+    <dimen name="shadow_width">15dp</dimen>
+
+    <integer name="num_cols">1</integer>
+	
 </resources>

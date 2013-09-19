@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/white">
+
+	<itp.team1.jobseeker.Layouts.PullToRefreshListView
+	    android:id="@+id/layout_listview"
+	    android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:duplicateParentState="true"
+        android:cacheColorHint="@null"
+        android:scrollingCache="false"
+        android:divider="@null"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:paddingTop="40dp"
+	    />
+	<!-- android:smoothScrollbar="true" -->
+	
+	<include layout="@layout/action_bar" android:id="@+id/top_navigation"/>
+</FrameLayout>

@@ -2,27 +2,32 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="itp.team1.jobseeker"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0"
+    android:installLocation="preferExternal" >
 
     <!-- Versioning -->
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+    <uses-sdk android:minSdkVersion="8" />
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-   	<uses-permission android:name="android.permission.SET_DEBUG_APP" />
-   	
+    <!-- <uses-permission android:name="android.permission.SET_DEBUG_APP" /> -->
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <!-- Activities -->
         <activity
-            android:name="itp.team1.jobseeker.MainActivity"
+            android:name="itp.team1.jobseeker.mainscreens.ChooserActivity"
+            android:label="@string/app_name" >
+            
+        </activity>
+        <activity
+            android:name="itp.team1.jobseeker.mainscreens.MainSlidingActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="itp.team1.jobseeker.SearchActivity"
+            android:name="itp.team1.jobseeker.mainscreens.SearchActivity"
             android:label="@string/title_activity_search"
             android:parentActivityName="MainActivity" >
             <meta-data
@@ -39,7 +44,7 @@
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="itp.team1.jobseeker.ResultsActivity"
+            android:name="itp.team1.jobseeker.mainscreens.ResultsActivityobseeker.ResultsActivity"
             android:label="@string/title_activity_results"
             android:parentActivityName="SearchActivity" >
             <meta-data

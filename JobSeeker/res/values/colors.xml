@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#990000</color>
+	<color name="green">#009900</color>
+	<color name="blue">#000099</color>
+	<color name="item_background">#ffffff</color>
+	<color name="item_background_selected">#CDffffff</color>
+	<color name="item_text">#9A000000</color>
+    <color name="item_selected_text">#000000</color> <!-- sixty -->
+    <color name="menu_background">#CD000000</color> <!-- eighty -->
+    <color name="menu_background_selected">#000000</color>
+    <color name="transparent">@android:color/transparent</color>
+   
+    <color name="color_android_blue">#ff33b5e5</color>
+    <color name="color_android_light_grey">#ffb2b2b2</color>
+    <color name="color_android_middle_grey">#ff555555</color>
+    <color name="color_android_dark_grey">#ff4c4c4c</color>
+    <color name="color_android_darker_grey">#ff333333</color>
+</resources>
