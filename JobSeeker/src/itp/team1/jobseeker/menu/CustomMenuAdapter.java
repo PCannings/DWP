@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import itp.team1.jobseeker.Constants;
@@ -45,18 +46,18 @@ public class CustomMenuAdapter  extends ArrayAdapter<CustomMenuItem>{
 
 		// Set some view properties
 		holder.txtTitle.setText(item.title);
-		holder.txtTitle.setTextColor(parent.getResources().getColor(R.color.item_text));
-		holder.imgIcon.setColorFilter(parent.getResources().getColor(R.color.item_text));
 	    holder.imgIcon.setImageResource(item.icon);
-		holder.layout.setBackgroundColor(parent.getResources().getColor(R.color.menu_background));
 
 		// Restore the checked state properly
 		final ListView lv = (ListView) parent;
-		holder.layout.setChecked(lv.isItemChecked(position), true);
+		//holder.layout.setChecked(lv.isItemChecked(position), true);
 
+		holder.layout.setSelected(lv.isItemChecked(position));
+		
 		if(position == Constants.MENU_POSITION) {
-			holder.layout.setChecked(true, true);
+			//holder.layout.setChecked(true, true);
 			lv.setItemChecked(position, true);
+			holder.layout.setSelected(true);
 		}
         
         return row;
@@ -66,14 +67,14 @@ public class CustomMenuAdapter  extends ArrayAdapter<CustomMenuItem>{
     {
         ImageView imgIcon;
         TextView txtTitle;
-        SelectableListItem layout;
+        //SelectableListItem layout;
+        RelativeLayout layout;
         
         public MenuHolder(View root) {
         	txtTitle = (TextView) root.findViewById(R.id.item_text);
         	imgIcon = (ImageView)  root.findViewById(R.id.item_image);
-			layout = (SelectableListItem) root.findViewById(R.id.menu_item_layout);
-			layout.setCheckSignResource(R.id.item_image);
-			layout.setTextResource(R.id.item_text);
+			layout = (RelativeLayout) root.findViewById(R.id.menu_item_layout);
+			//layout.setClickable(true);
 		}
     }
 }

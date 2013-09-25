@@ -20,7 +20,6 @@
         <attr name="outlineEnabled" format="boolean" />
         <attr name="outlineColor" format="color|reference" />
     </declare-styleable>
-    
     <declare-styleable name="SlidingMenu">
         <attr name="mode">
             <enum name="left" value="0" />
@@ -46,5 +45,17 @@
         <attr name="selectorEnabled" format="boolean" />
         <attr name="selectorDrawable" format="reference" />
     </declare-styleable>
-    
+
+    <attr name="customfont" format="string" />
+
+    <declare-styleable name="TextViewPlus">
+        <attr name="customfont" />
+    </declare-styleable>
+    <declare-styleable name="EditTextPlus">
+        <attr name="customfont" />
+    </declare-styleable>
+    <declare-styleable name="ButtonPlus">
+        <attr name="customfont" />
+    </declare-styleable>
+
 </resources>

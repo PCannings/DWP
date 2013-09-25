@@ -34,7 +34,7 @@ public class SplashScreen extends Activity{
 				if (!finished){
 					// TODO Auto-generated method stub
 		        	// Create an Intent that will start the main activity.
-		        	Intent mainIntent = new Intent(SplashScreen.this, ChooserActivity.class);
+		        	Intent mainIntent = new Intent(SplashScreen.this, MainSlidingActivity.class);
 		        	SplashScreen.this.startActivity(mainIntent);
 		        	//Finish the splash activity so it can't be returned to.
 		        	finish();
@@ -56,7 +56,7 @@ public class SplashScreen extends Activity{
 		   		 if (!finished)
 				 {
 		        	// Create an Intent that will start the main activity.
-		        	Intent mainIntent = new Intent(SplashScreen.this, ChooserActivity.class);
+		        	Intent mainIntent = new Intent(SplashScreen.this, MainSlidingActivity.class);
 			        SplashScreen.this.startActivity(mainIntent);
 		        	//Finish the splash activity so it can't be returned to.
 		        	finish();

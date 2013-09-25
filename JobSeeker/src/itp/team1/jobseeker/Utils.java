@@ -12,10 +12,11 @@ import android.net.NetworkInfo;
 
 public class Utils {
 
-	public static String parseTime(long date){
+	public static String parseTimeNew(long date){
 		String timeSince = "";
 		Calendar c = Calendar.getInstance();
 
+		/*
 		TimeZone z = c.getTimeZone();
 		int offset = z.getRawOffset();
 		if(z.inDaylightTime(new Date())){
@@ -27,6 +28,7 @@ public class Utils {
 
 		c.add(Calendar.HOUR_OF_DAY, (-offsetHrs));
 		c.add(Calendar.MINUTE, (-offsetMins));
+		*/
 
 		long timeNow = c.getTimeInMillis() - date;
 		long days = TimeUnit.MILLISECONDS.toDays(timeNow);
@@ -41,6 +43,30 @@ public class Utils {
 		}
 		if(days == 0) {
 			timeSince = "just now";
+		}
+
+		return timeSince;
+	}
+	
+	public static String parseTime(long date){
+		String timeSince = "";
+		Calendar today = Calendar.getInstance();
+		
+		Calendar post = Calendar.getInstance();
+		post.setTimeInMillis(date);
+		
+		if(today.get(Calendar.DAY_OF_MONTH)==post.get(Calendar.DAY_OF_MONTH)) {
+			if(today.get(Calendar.HOUR_OF_DAY) > post.get(Calendar.HOUR_OF_DAY)) {
+				timeSince = String.valueOf(today.get(Calendar.HOUR_OF_DAY) - post.get(Calendar.HOUR_OF_DAY)) + " hours ago";
+			} else {
+				if(today.get(Calendar.MINUTE) > post.get(Calendar.MINUTE)) {
+					timeSince = String.valueOf(today.get(Calendar.MINUTE) - post.get(Calendar.MINUTE)) + " minutes ago";
+				} else {
+					timeSince = "just now";
+				}
+			}
+		} else {
+			timeSince = String.valueOf(today.get(Calendar.DAY_OF_MONTH) - post.get(Calendar.DAY_OF_MONTH)) + " days ago";
 		}
 
 		return timeSince;

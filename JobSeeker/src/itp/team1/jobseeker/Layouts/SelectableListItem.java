@@ -43,10 +43,10 @@ public class SelectableListItem extends CheckableRelativeLayout {
 		this.isChecked = isChecked;
 		if(isChecked){
 			if(menu) {
-				this.setBackgroundColor(getResources().getColor(R.color.menu_background_selected));
+				this.setBackgroundColor(getResources().getColor(R.color.menu_background));
 				(this.findViewById(checkSignId)).setVisibility(View.VISIBLE);
-				((ImageView) this.findViewById(checkSignId)).setColorFilter(getResources().getColor(R.color.item_selected_text));
-				((TextView) this.findViewById(textId)).setTextColor(getResources().getColor(R.color.item_selected_text));
+				//((ImageView) this.findViewById(checkSignId)).setColorFilter(getResources().getColor(R.color.item_selected_text));
+				//((TextView) this.findViewById(textId)).setTextColor(getResources().getColor(R.color.item_selected_text));
 			}
 			else {
 				this.setBackgroundColor(getResources().getColor(R.color.item_background_selected));
@@ -58,8 +58,8 @@ public class SelectableListItem extends CheckableRelativeLayout {
 			if(menu) {
 				this.setBackgroundColor(getResources().getColor(R.color.menu_background));
 				(this.findViewById(checkSignId)).setVisibility(View.VISIBLE);
-				((ImageView) this.findViewById(checkSignId)).setColorFilter(getResources().getColor(R.color.item_text));
-				((TextView) this.findViewById(textId)).setTextColor(getResources().getColor(R.color.item_text));
+				//((ImageView) this.findViewById(checkSignId)).setColorFilter(getResources().getColor(R.color.item_text));
+				//((TextView) this.findViewById(textId)).setTextColor(getResources().getColor(R.color.item_text));
 			}
 			else {
 				this.setBackgroundColor(getResources().getColor(R.color.item_background));

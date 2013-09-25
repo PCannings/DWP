@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jobseeker="http://schemas.android.com/apk/res/itp.team1.jobseeker"
+    android:id="@+id/nav_bar"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:weightSum="1" >
+
+    <TextView
+        android:id="@+id/sites"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_weight="0.5"
+        android:background="@drawable/tab_bg_selector"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/job_sites"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/teal_accent" />
+
+    <TextView
+        android:id="@+id/social"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_weight="0.5"
+        android:background="@drawable/tab_bg_selector"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/social_sites"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+</LinearLayout>

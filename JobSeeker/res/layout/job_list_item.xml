@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jobseeker="http://schemas.android.com/apk/res/itp.team1.jobseeker"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -15,78 +16,85 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="5dp"
         android:orientation="vertical" >
-        
+
         <com.example.android.bitmapfun.util.RecyclingImageView
             android:id="@+id/image"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/ic_launcher"
-            android:background="@drawable/ic_launcher"
+            android:background="@color/transparent"
             android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher"
             android:visibility="visible" />
-        
-          <TextView
-                android:id="@+id/source"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Distance"
-                android:gravity="center"
-                android:textColor="@color/item_selected_text"
-                android:textSize="14sp" />
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/text_content"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
         android:layout_toRightOf="@+id/left_content"
         android:orientation="horizontal" >
 
-        <RelativeLayout
-            android:id="@+id/top_content"
-            android:layout_width="fill_parent"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:orientation="vertical"
-            android:paddingRight="10dp" >
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="Large Text for title her see how displayed"
-                android:textStyle="bold" />
-        </RelativeLayout>
+            android:text="Large Text for title her see how displayed"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/top_content"
+            android:layout_below="@+id/title"
+            android:ellipsize="end"
+            android:maxLines="3"
             android:text="Cafe Address Here"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/salary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:text="Salary: "
+            android:textColor="@color/item_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/closing"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/salary"
+            android:text="Closing: "
+            android:textColor="@color/item_text"
+            android:textSize="16sp"
+            android:textStyle="bold"  />
 
         <RelativeLayout
             android:id="@+id/bottom_content"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/description"
+            android:layout_below="@+id/closing"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_alignBottom="@+id/icons"
+                android:layout_alignParentLeft="true"
                 android:layout_toLeftOf="@+id/icons"
                 android:text="No user rating"
                 android:textColor="@color/item_text"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/icons"
@@ -94,28 +102,29 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:visibility="visible" >
 
                 <ImageView
-                    android:id="@+id/offer_icon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:id="@+id/viewed"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/eye_icon" />
 
                 <ImageView
-                    android:id="@+id/food_icon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:id="@+id/applied"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/briefcase_icon" />
 
                 <ImageView
-                    android:id="@+id/wifi_icon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:id="@+id/notes"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_marginRight="0dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/note_icon" />
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>

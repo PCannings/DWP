@@ -21,7 +21,7 @@ import com.loopj.android.http.RequestParams;
 public class SearchSocialCall implements DataParser {
 	
 	Context mContext;
-	String [] JSONKeys = {"job", "jobs"};
+	String [] JSONKeys = {"jobs"};
 
 	private static AsyncHttpClient client = new AsyncHttpClient();
 	static StringBuilder uriBuilder;
@@ -104,10 +104,11 @@ public class SearchSocialCall implements DataParser {
 		}
 	}
 	
-	public static RequestParams setParamsSearch(String username, String password){
+	public static RequestParams setParamsSearch(int offset, int limit){
 		params = new RequestParams();
-		params.put("username", username);
-		params.put("password", password);
+		params.put("location", String.valueOf("dundee"));
+		params.put("offset", String.valueOf(offset));
+		params.put("limit", String.valueOf(limit));
 		return params;
 	}
 	

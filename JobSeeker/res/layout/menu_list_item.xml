@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- <com.entrago.arsenio.Layouts.SelectableListItem -->
-<itp.team1.jobseeker.Layouts.SelectableListItem
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+<com.entrago.arsenio.Layouts.SelectableListItem
+<itp.team1.jobseeker.Layouts.SelectableListItem 
+xmlns:jobseeker="http://schemas.android.com/apk/res/itp.team1.jobseeker"
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/menu_item_layout"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="@color/menu_background"
     android:gravity="center"
-    android:padding="10dp"
     android:orientation="vertical"
-    android:background="@color/menu_background">
+    android:padding="10dp" >
 
     <ImageView
         android:id="@+id/item_image"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:scaleType="fitCenter"
-        android:layout_marginBottom="10dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
         android:duplicateParentState="true"
-        android:src="@drawable/ic_launcher"/>
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/item_text"
@@ -28,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:duplicateParentState="true"
         android:text="\E005 Large Text"
-        android:textColor="@color/item_selected_text"
-        android:textSize="14sp"/>
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
-</itp.team1.jobseeker.Layouts.SelectableListItem>
+</RelativeLayout>

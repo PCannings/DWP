@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.Window;
 
 public class MainSlidingActivity extends SlidingFragmentActivityNA  { 
 
@@ -20,6 +21,7 @@ public class MainSlidingActivity extends SlidingFragmentActivityNA  {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		Log.v("MainActivity", "OnCreate");
 	
 		// set the Above View

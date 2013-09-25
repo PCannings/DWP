@@ -1,0 +1,4 @@
+keystore password: jobstreamKeystore
+
+alias: Team One
+alias password: teamOneJobStream

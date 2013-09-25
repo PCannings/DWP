@@ -16,7 +16,6 @@
 
 package com.example.android.bitmapfun.util;
 
-import itp.team1.jobseeker.mainscreens.ChooserActivity;
 import itp.team1.jobseeker.mainscreens.MainSlidingActivity;
 
 import android.annotation.TargetApi;
@@ -44,8 +43,7 @@ public class Utils {
             if (Utils.hasHoneycomb()) {
                 threadPolicyBuilder.penaltyFlashScreen();
                 vmPolicyBuilder
-                        .setClassInstanceLimit(MainSlidingActivity.class, 1)
-                        .setClassInstanceLimit(ChooserActivity.class, 1);
+                        .setClassInstanceLimit(MainSlidingActivity.class, 1);
             }
             StrictMode.setThreadPolicy(threadPolicyBuilder.build());
             StrictMode.setVmPolicy(vmPolicyBuilder.build());
