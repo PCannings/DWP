@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">The Jobs Seeker</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_menu_title">Main Menu</string>
+    <string name="job_search_button">Job Search</string>
+    <string name="diary_button">Diary</string>
+    <string name="search_jobs_title">Search Jobs Main Page</string>
+    <string name="diary_title">Diary Main Page</string>
+    <string name="search_button">Search</string>
+    <color name="green">#f76713</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
+</resources>
