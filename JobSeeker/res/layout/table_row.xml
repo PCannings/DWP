@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jobseeker="http://schemas.android.com/apk/res/itp.team1.jobseeker"
+    android:id="@+id/tableRow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="1dp"
+    android:weightSum="1" >
+
+    <TextView
+        android:id="@+id/date"
+        style="@style/Table.TextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:gravity="left|center_vertical"
+        android:text="Date" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/details"
+        style="@style/Table.TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.45"
+        android:gravity="left|center_vertical"
+        android:text="Job Details &amp; Notes" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/viewed"
+        style="@style/Table.TextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:gravity="center_horizontal"
+        android:padding="0dp" >
+
+        <TextView
+            android:id="@+id/viewed_text"
+            style="@style/Table.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="N" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/applied"
+        style="@style/Table.TextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:gravity="center_horizontal"
+        android:padding="0dp" >
+
+        <TextView
+            android:id="@+id/applied_text"
+            style="@style/Table.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="N" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/caution"
+        style="@style/Table.TextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:gravity="center_horizontal"
+        android:padding="0dp" >
+
+        <TextView
+            android:id="@+id/caution_text"
+            style="@style/Table.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="N" />
+    </LinearLayout>
+
+</TableRow>

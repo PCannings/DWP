@@ -1,13 +1,14 @@
-package itp.team1.jobseeker.mainscreens;
+package itp.team1.jobseeker.mainscreens.savedjobs;
 
-import itp.team1.jobseeker.Layouts.PullToRefreshListView;
+import itp.team1.jobseeker.mainscreens.JobDetailsActivity;
+import itp.team1.jobseeker.mainscreens.MainSlidingActivity;
+import itp.team1.jobseeker.mainscreens.savedjobs.SavedJobsFragment;
 import itp.team1.jobseeker.model.Job;
 import itp.team1.jobseeker.session.Delegate;
+import itp.team1.jobseeker.session.database.JobItem;
 import itp.team1.jobseeker.R;
 import itp.team1.jobseeker.Utils;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 
 import android.app.Activity;
@@ -15,7 +16,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -23,15 +23,15 @@ import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class JobAdapter  extends BaseAdapter {
+public class JobItemAdapter  extends BaseAdapter {
 
 	Activity con; 
 	int layoutResourceId;    
-	LinkedList<Job> items;
+	LinkedList<JobItem> items;
 	Delegate delegate;
 	ViewHolder holder;
 
-	public JobAdapter(Activity context, LinkedList<Job> items) {
+	public JobItemAdapter(Activity context, LinkedList<JobItem> items) {
 		this.layoutResourceId = R.layout.job_list_item;
 		this.con = context;
 		this.items = items;
@@ -64,45 +64,48 @@ public class JobAdapter  extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		final Job item = getItem(position);
+		final JobItem item = getItem(position);
 
-		if(item.source.contains("facebook")) {
+		if(item.getSource().contains("facebook")) {
 			holder.image.setImageResource(R.drawable.logo_facebook);
-		} else if(item.source.contains("twitter")){
+		} else if(item.getSource().contains("twitter")){
 			holder.image.setImageResource(R.drawable.logo_twitter);
-		} else if(item.source.contains("indeed")){
+		} else if(item.getSource().contains("indeed")){
 			holder.image.setImageResource(R.drawable.logo_indeed);
-		} else if(item.source.contains("guardian")){
+		} else if(item.getSource().contains("guardian")){
 			holder.image.setImageResource(R.drawable.logo_guardian);
-		} else if(item.source.contains("s1")){
+		} else if(item.getSource().contains("s1")){
 			holder.image.setImageResource(R.drawable.logo_sone);
 		} 
 		// Set some view properties
-		if(!item.title.equals("")) {
+		if(!item.getTitle().equals("")) {
 			holder.title.setVisibility(View.VISIBLE);
-			holder.title.setText(item.title);
+			holder.title.setText(item.getTitle());
 		}
 		else holder.title.setVisibility(View.GONE);
 
-		if(!item.description.equals("")) {
+		if(!item.getDescription().equals("")) {
 			holder.description.setVisibility(View.VISIBLE);
-			holder.description.setText(item.description);
+			holder.description.setText(item.getDescription());
 		}
 		else holder.description.setVisibility(View.GONE);
 
+		/*
 		if(!item.salary.equals("")) {
 			holder.salary.setVisibility(View.VISIBLE);
 			holder.salary.setText("Salary: " + item.salary);
 		}
-		else holder.salary.setVisibility(View.GONE);
+		else 
+		*/
+		holder.salary.setVisibility(View.GONE);
 
-		if(!item.closingDate.equals("")) {
+		if(!item.getClosingDate().equals("")) {
 			holder.closing.setVisibility(View.VISIBLE);
-			holder.closing.setText("Closing Date: " + item.closingDate);
+			holder.closing.setText("Closing Date: " + item.getClosingDate());
 		}
 		else holder.closing.setVisibility(View.GONE);
 
-		String text = Utils.parseTime(item.time);
+		String text = Utils.parseTime(item.getTimestamp());
 		holder.time.setText(text);
 
 		holder.more.setOnClickListener(new OnClickListener(){
@@ -111,10 +114,10 @@ public class JobAdapter  extends BaseAdapter {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				delegate.getSession().incrementViewed();
-				if(item.title.equals(""))
-					MainSlidingActivity.databases.addActivity(item.id, Utils.getFormattedDate(), 1, 0, 0, "", item.description.substring(0, 140)+ "...", 0);
+				if(item.getTitle().equals(""))
+					MainSlidingActivity.databases.addActivity(item.getDbId(), Utils.getFormattedDate(), 1, 0, 0, "", item.getDescription().substring(0, 140)+ "...", 0);
 				else 
-					MainSlidingActivity.databases.addActivity(item.id, Utils.getFormattedDate(), 1, 0, 0, "", item.title, 0);
+					MainSlidingActivity.databases.addActivity(item.getDbId(), Utils.getFormattedDate(), 1, 0, 0, "", item.getTitle(), 0);
 				Intent i = new Intent(con, JobDetailsActivity.class);
 				i.putExtra("Position", position);
 				con.startActivity(i);
@@ -123,33 +126,17 @@ public class JobAdapter  extends BaseAdapter {
 
 		});
 		
-		if(MainSlidingActivity.databases.getJobViewedActivity(item.id, false, false, false).size()!=0){
+		if(MainSlidingActivity.databases.getJobViewedActivity(item.getDbId(), false, false, false).size()!=0){
 			holder.viewed.setColorFilter(con.getResources().getColor(R.color.medium_blue));
 		} else {
 			holder.viewed.setColorFilter(con.getResources().getColor(R.color.greyed_out));
 		}
 
-		if(ResultsFragment.toSave.contains(item)) {
+		if(SavedJobsFragment.toDelete.contains(item)) {
 			holder.check.setVisibility(View.VISIBLE);
 		} else {
 			holder.check.setVisibility(View.GONE);
 		}
-
-		/*
-		holder.layout.setOnLongClickListener(new OnLongClickListener(){
-
-			@Override
-			public boolean onLongClick(View v) {
-				// TODO Auto-generated method stub
-				
-				holder.check.setVisibility(View.VISIBLE);
-				ResultsFragment.toSave.add(item);
-				ResultsFragment.mSave.setVisibility(View.VISIBLE);
-				return false;
-			}
-
-		});
-		*/
 
 		return convertView;
 	}
@@ -165,9 +152,9 @@ public class JobAdapter  extends BaseAdapter {
 		public ImageView viewed;
 		public ImageView applied;
 		public ImageView notes;
+		public ImageView check;
 		public ImageView more;
 		public RelativeLayout layout;
-		public ImageView check;
 	}
 
 	@Override
@@ -181,7 +168,7 @@ public class JobAdapter  extends BaseAdapter {
 	}
 
 	@Override
-	public Job getItem(int position) {
+	public JobItem getItem(int position) {
 		return items.get(position);
 	}
 
@@ -190,11 +177,11 @@ public class JobAdapter  extends BaseAdapter {
 		return position;
 	}
 
-	public void addBottom(Job OutletItem) {
+	public void addBottom(JobItem OutletItem) {
 		items.addLast(OutletItem);
 	}
 
-	public void addTop(Job OutletItem) {
+	public void addTop(JobItem OutletItem) {
 		items.addFirst(OutletItem);
 	}
 }

@@ -10,6 +10,7 @@
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fadingEdge="none"
         android:overScrollMode="never"
         android:scrollbars="none" >
 
@@ -22,6 +23,27 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingTop="60dp" >
+            
+           <TextView
+                android:id="@+id/appointment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No Appointment Set" />
+
+            <TextView
+                android:id="@+id/Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date" />
+
+            <TextView
+                android:id="@+id/Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Time" />
 
             <TableLayout
                 android:id="@+id/summary"
@@ -323,8 +345,8 @@
             </TableLayout>
         </LinearLayout>
     </ScrollView>
-    
-     <include
+
+    <include
         android:id="@+id/top_navigation"
         layout="@layout/action_bar" />
 

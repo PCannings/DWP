@@ -84,7 +84,7 @@ public class SessionManager {
 	}
 	
 	public void incrementApplied(){
-		long view = getViewed() + 1 ;
+		long view = getApplied() + 1 ;
 		editor.putLong(KEY_JOBS_APPLIED, view);
 		editor.commit();
 	}
@@ -99,7 +99,7 @@ public class SessionManager {
 	}
 	
 	public void incrementClicked(){
-		long view = getViewed() + 1 ;
+		long view = getClicked() + 1 ;
 		editor.putLong(KEY_JOBS_CLICKED, view);
 		editor.commit();
 	}
@@ -114,7 +114,7 @@ public class SessionManager {
 	}
 	
 	public void incrementSearches(){
-		long view = getViewed() + 1 ;
+		long view = getSearches() + 1 ;
 		editor.putLong(KEY_JOBS_SEARCHED, view);
 		editor.commit();
 	}

@@ -15,8 +15,10 @@ import android.widget.ListView;
 import itp.team1.jobseeker.Constants;
 import itp.team1.jobseeker.R;
 import itp.team1.jobseeker.mainscreens.DiaryFragment;
+import itp.team1.jobseeker.mainscreens.HelpFragment;
 import itp.team1.jobseeker.mainscreens.MainSlidingActivity;
 import itp.team1.jobseeker.mainscreens.SearchFragment;
+import itp.team1.jobseeker.mainscreens.savedjobs.SavedJobsFragment;
 
 public class MenuFragment extends Fragment {
 
@@ -54,10 +56,10 @@ public class MenuFragment extends Fragment {
 					newContent = new DiaryFragment();
 					break;
 				case 2:
-					newContent = new Fragment();//SavedJobsFragment();
+					newContent = new SavedJobsFragment();
 					break;
 				case 3:
-					newContent = new Fragment(); // HelpFragment();
+					newContent = new HelpFragment(); // HelpFragment();
 					break;
 				default: 
 					newContent = new Fragment();

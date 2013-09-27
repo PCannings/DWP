@@ -48,6 +48,15 @@ public class Utils {
 		return timeSince;
 	}
 	
+	public static String getFormattedDate(){
+		Calendar calendar = Calendar.getInstance();
+		
+		String date = calendar.get(Calendar.DAY_OF_MONTH) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.YEAR) + " " +
+				calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE);
+		
+		return date;
+	}
+	
 	public static String parseTime(long date){
 		String timeSince = "";
 		Calendar today = Calendar.getInstance();

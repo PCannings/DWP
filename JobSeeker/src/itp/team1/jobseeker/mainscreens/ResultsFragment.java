@@ -2,6 +2,8 @@ package itp.team1.jobseeker.mainscreens;
 
 import java.util.LinkedList;
 
+import com.loopj.android.http.RequestParams;
+
 import itp.team1.jobseeker.Constants;
 import itp.team1.jobseeker.R;
 import itp.team1.jobseeker.Utils;
@@ -14,6 +16,7 @@ import itp.team1.jobseeker.model.Job;
 import itp.team1.jobseeker.server.SearchAllCall;
 import itp.team1.jobseeker.server.SearchSitesCall;
 import itp.team1.jobseeker.server.SearchSocialCall;
+import itp.team1.jobseeker.session.database.JobItem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,6 +31,7 @@ import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,6 +44,8 @@ import android.widget.Toast;
 public class ResultsFragment extends Fragment implements ServerCallObserver{
 
 	protected static LinkedList<Job> data;
+	
+	public static LinkedList<Job> toSave;
 
 	private static final int CALL_STEP = 25;
 
@@ -55,6 +61,8 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 
 	private JobAdapter adapter;
 
+	RelativeLayout resultsFooterContainer;
+	RelativeLayout resultsFooter;
 	RelativeLayout footerContainer;
 	RelativeLayout footer;
 	ProgressBar progress;
@@ -66,9 +74,23 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 
 	private LayoutInflater mInflater;
 
-	//public ResultsFragment(location, type, title, ....){
+	private String search, location, type, hours, employer, radius, salary, wage;
 
-	//}
+	private LinearLayout resultsForView;
+	private TextView resultsFor;
+
+	public static TextView mSave;
+
+	public ResultsFragment(String search, String location, String type, String hours, String employer, String radius, String salary, String wage){
+		this.search = search.toLowerCase();
+		this.location = location.toLowerCase();
+		this.type = type;
+		this.hours = hours; 
+		this.employer = employer.toLowerCase();
+		this.radius = radius;
+		this.salary = salary;
+		this.wage = wage;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -76,11 +98,40 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 		//requestFeature(Window.FEATURE_NO_TITLE);
 		activity = (MainSlidingActivity)getActivity();
 		data = new  LinkedList<Job>();
+		toSave = new  LinkedList<Job>();
 		mInflater = inflater;
 
 		View v = mInflater.inflate(R.layout.view_results, null);
 
 		tabs = (LinearLayout) v.findViewById(R.id.tabs);
+		resultsForView = (LinearLayout) v.findViewById(R.id.results);
+
+		resultsForView.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				activity.removeContent(ResultsFragment.this);
+			}
+
+		});
+
+
+		resultsFor = (TextView) resultsForView.findViewById(R.id.results_text);
+		String results = "Results for: ";
+		if(!search.isEmpty()) results = results + search + ", ";
+		if(!location.isEmpty()) results = results + location + ", ";
+		if(!radius.isEmpty() && !radius.equals("Select")) results = results + "within " + radius + " mile(s), ";
+		if(!type.isEmpty() && !type.equals("Select")) results = results + type + ", ";
+		if(!hours.isEmpty() && !hours.equals("Select")) results = results + hours + ", ";
+		if(!employer.isEmpty()) results = results + employer + ", ";
+		if(!salary.isEmpty() && !salary.equals("Select")) results = results + salary + ", ";
+		if(!wage.isEmpty() && !wage.equals("Select")) results = results + wage + ", ";
+		if(results.endsWith(", ")) {
+			results = results.substring(0, results.length()-2);
+		}
+		resultsFor.setText(results);
+
 		sites = (TextView) v.findViewById(R.id.sites);
 		sites.setSelected(true);
 		social = (TextView) v.findViewById(R.id.social);
@@ -120,10 +171,30 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 			}
 		});
 		mTitle = (TextView)actionHeader.findViewById(R.id.title);
+		mSave = (TextView)actionHeader.findViewById(R.id.save_delete);
+		mSave.setText("Save");
+		mSave.setVisibility(View.INVISIBLE);
+		
+		mSave.setOnClickListener(new OnClickListener(){
 
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				for(int i = 0; i< toSave.size(); i++) {
+					MainSlidingActivity.databases.addJob(toSave.get(i));
+				}
+				toSave.clear();
+				adapter.notifyDataSetChanged();
+				mListView.invalidate();
+				mSave.setVisibility(View.GONE);
+			}
+			
+		});
+	
 		mListView = (PullToRefreshListView)v.findViewById(R.id.layout_listview);
 
 		setLoadingFooter();
+		setNoResultsFooter();
 		toggleLoadingFooter(false);
 
 		adapter = new JobAdapter(activity, data);
@@ -134,6 +205,7 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 
 			@Override
 			public void onRefresh() {
+				toggleNoResultsFooter(false);
 				makeRefreshCall();
 			}
 		});
@@ -167,7 +239,22 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 		});
 
 		mListView.setRefreshing();
+		
+		mListView.setOnItemLongClickListener(new OnItemLongClickListener(){
 
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				if(!ResultsFragment.toSave.contains(data.get(position)))
+					ResultsFragment.toSave.add(data.get(position));
+				ResultsFragment.mSave.setVisibility(View.VISIBLE);
+				adapter.notifyDataSetChanged();
+				mListView.invalidate();
+				return true;
+			}
+			
+		});
+		
 		setRetainInstance(true);
 
 		return v;
@@ -179,6 +266,13 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 		progress = (ProgressBar) footerContainer.findViewById(R.id.progress);
 		loading = (TextView) footerContainer.findViewById(R.id.pending_text);
 		mListView.addFooterView(footerContainer);
+	}
+
+	public void setNoResultsFooter(){
+		resultsFooterContainer = (RelativeLayout) mInflater.inflate(R.layout.no_results, null);
+		resultsFooter = (RelativeLayout) resultsFooterContainer.findViewById(R.id.no_results_layout);
+		mListView.addFooterView(resultsFooterContainer);
+		toggleNoResultsFooter(false);
 	}
 
 	@Override
@@ -205,6 +299,22 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 		}
 	}
 
+	public void toggleNoResultsFooter(boolean open){
+
+		if(open){
+			MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) resultsFooter.getLayoutParams();
+			mlp.setMargins(0, Math.round(0), 0, 0);
+			resultsFooter.setLayoutParams(mlp);
+			resultsFooter.setVisibility(View.VISIBLE);
+		}
+		else {
+			MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) resultsFooter.getLayoutParams();
+			mlp.setMargins(0, Math.round(-resultsFooter.getHeight()), 0, 0);
+			resultsFooter.setLayoutParams(mlp);
+			resultsFooter.setVisibility(View.GONE);
+		}
+	}
+
 	public void makeRefreshCall(){
 		fetching = true;
 		data.clear();
@@ -215,7 +325,8 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 			finishedAppending = false;
 			Log.v("DATA IN", String.valueOf(data.size()));
 			SearchSitesCall searchCall = new SearchSitesCall(activity);
-			searchCall.setParamsSearch(0, CALL_STEP);
+			searchCall.setAllParamsSearch(search, location, type, hours, employer, radius, 0, CALL_STEP);
+			//searchCall.setParamsSearch(0, CALL_STEP);
 			searchCall.makeSearchCall();
 			searchCall.addServerCallObserver(ResultsFragment.this);
 		} else {
@@ -224,7 +335,8 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 			finishedAppending = false;
 			Log.v("DATA IN", String.valueOf(data.size()));
 			SearchSocialCall searchCall = new SearchSocialCall(activity);
-			searchCall.setParamsSearch(0, CALL_STEP);
+			searchCall.setAllParamsSearch(search, location, type, hours, employer, radius, 0, CALL_STEP);
+			//searchCall.setParamsSearch(0, CALL_STEP);
 			searchCall.makeSearchCall();
 			searchCall.addServerCallObserver(ResultsFragment.this);
 		}
@@ -235,13 +347,15 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 		if(sitesOn) {
 			Log.v("DATA IN", String.valueOf(data.size()));
 			SearchSitesCall searchCall = new SearchSitesCall(activity);
-			searchCall.setParamsSearch(data.size(), CALL_STEP);
+			searchCall.setAllParamsSearch(search, location, type, hours, employer, radius, data.size(), CALL_STEP);
+			//searchCall.setParamsSearch(data.size(), CALL_STEP);
 			searchCall.makeSearchCall();
 			searchCall.addServerCallObserver(ResultsFragment.this);
 		} else {
 			Log.v("DATA IN", String.valueOf(data.size()));
 			SearchSocialCall searchCall = new SearchSocialCall(activity);
-			searchCall.setParamsSearch(data.size(), CALL_STEP);
+			searchCall.setAllParamsSearch(search, location, type, hours, employer, radius, data.size(), CALL_STEP);
+			//searchCall.setParamsSearch(data.size(), CALL_STEP);
 			searchCall.makeSearchCall();
 			searchCall.addServerCallObserver(ResultsFragment.this);
 		}
@@ -256,6 +370,11 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 		if(Job.jobs.size() < CALL_STEP-1) {
 			appendMore = false;
 			finishedAppending = true;
+			if(data.size()==0){
+				toggleNoResultsFooter(true);
+			} else {
+				toggleNoResultsFooter(false);
+			}
 		} else {
 			appendMore = true;
 		}
@@ -276,6 +395,11 @@ public class ResultsFragment extends Fragment implements ServerCallObserver{
 		}
 		toggleLoadingFooter(false);
 		mListView.onRefreshComplete();
+		if(data.size()==0){
+			toggleNoResultsFooter(true);
+		} else {
+			toggleNoResultsFooter(false);
+		}
 		if(String.valueOf(exception.getClass()).contains("java.net.SocketTimeoutException")){
 			Toast.makeText(activity, "Ooops, something went wrong. Please try again :(",  Toast.LENGTH_LONG).show();
 		} else {

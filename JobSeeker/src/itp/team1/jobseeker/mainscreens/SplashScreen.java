@@ -9,12 +9,13 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class SplashScreen extends Activity{
 	
 	 // Set the display time, in milliseconds (or extract it out as a configurable parameter)
    protected int SPLASH_DISPLAY_LENGTH = 1800;
-   LinearLayout layout;
+   RelativeLayout layout;
    public static DisplayMetrics metrics;
    private boolean finished = false;
        
@@ -23,7 +24,7 @@ public class SplashScreen extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash_screen);
-		layout = (LinearLayout)findViewById(R.id.layout);
+		layout = (RelativeLayout)findViewById(R.id.layout);
 		metrics = new DisplayMetrics();
 		
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);

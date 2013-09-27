@@ -26,6 +26,7 @@
     <color name="mediumish_blue">#0593ae</color>
     <color name="medium_blue">#04859d</color>
     <color name="light_blue">#37b6ce</color>
+    <color name="greyed_out">#bdbfbf</color>
     
     
 </resources>

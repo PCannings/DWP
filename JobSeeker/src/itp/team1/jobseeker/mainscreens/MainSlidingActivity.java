@@ -2,9 +2,11 @@ package itp.team1.jobseeker.mainscreens;
 
 import itp.team1.jobseeker.R;
 import itp.team1.jobseeker.menu.MenuFragment;
+import itp.team1.jobseeker.session.database.DatabaseHandler;
 import itp.team1.jobseeker.slidingmenu.SlidingMenu;
 import itp.team1.jobseeker.slidingmenu.SlidingMenu.OnOpenedListener;
 import itp.team1.jobseeker.slidingmenu.app.SlidingFragmentActivityNA;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +18,11 @@ import android.view.Window;
 public class MainSlidingActivity extends SlidingFragmentActivityNA  { 
 
 	private Fragment mContent;
+	private boolean results = false;
+
+	public static DatabaseHandler databases;
+
+	public Activity activity;
 
 
 	@Override
@@ -23,15 +30,17 @@ public class MainSlidingActivity extends SlidingFragmentActivityNA  {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		Log.v("MainActivity", "OnCreate");
-	
+
+		activity = this;
 		// set the Above View
 		if (savedInstanceState != null) {
 			mContent = getSupportFragmentManager().getFragment(savedInstanceState, "mContent");
 		}
-	
-		if (mContent == null)
-			mContent = new ResultsFragment();
 
+		if (mContent == null)
+			mContent = new SearchFragment();
+
+		databases = new DatabaseHandler(this);
 		// set the Above View
 		setContentView(R.layout.content_frame);
 		getSupportFragmentManager()
@@ -63,23 +72,29 @@ public class MainSlidingActivity extends SlidingFragmentActivityNA  {
 		});
 
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
+		databases = new DatabaseHandler(activity);
 		Log.v("MainActivity", "OnResume");
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
+		databases.close();
+		databases = null;
 		Log.v("MainActivity", "OnPause");
 	}
 
 	@Override
 	protected void onDestroy() {
 		Log.v("MainActivity", "onDestroy");
-
+		if(databases!=null) {
+			databases.close();
+			databases = null;
+		}
 		super.onDestroy();
 	}
 
@@ -110,6 +125,25 @@ public class MainSlidingActivity extends SlidingFragmentActivityNA  {
 				getSlidingMenu().showContent();
 			}
 		}, 50);
+	}
+
+	public void addContent(Fragment resultsFragment) {
+		// TODO Auto-generated method stub
+		results = true;
+		getSupportFragmentManager()
+		.beginTransaction()
+		.addToBackStack("Results Added")
+		.add(R.id.content_frame, resultsFragment, getFragmentTag(resultsFragment))
+		.commit();
+	}
+
+	public void removeContent(Fragment resultsFragment) {
+		// TODO Auto-generated method stub
+		results = false;
+		getSupportFragmentManager()
+		.beginTransaction()
+		.remove(resultsFragment)
+		.commit();
 	}
 
 	public void switchContentDelayed(final Fragment fragment) {
@@ -150,5 +184,7 @@ public class MainSlidingActivity extends SlidingFragmentActivityNA  {
 		tag = tag.substring(0, tag.lastIndexOf("{"));
 		return tag;
 	}
+
+
 
 }

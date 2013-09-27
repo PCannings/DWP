@@ -1,5 +1,7 @@
 package itp.team1.jobseeker.mainscreens;
 
+import java.util.Date;
+
 import itp.team1.jobseeker.R;
 import itp.team1.jobseeker.Utils;
 import itp.team1.jobseeker.mainscreens.WebViewDialog.OnCompleteListener;
@@ -37,10 +39,14 @@ public class JobDetailsActivity extends Activity {
 		@Override
 		public void onComplete(boolean isLoggedIn) {
 			// TODO Auto-generated method stub
+			
+			//dialog stuff here
 			if(isLoggedIn){
 				//TODO
 				delegate.getSession().incrementApplied();
-			} 
+			} else {
+				
+			}
 		}
 		
 	};
@@ -185,6 +191,12 @@ public class JobDetailsActivity extends Activity {
 		Log.v("MainActivity", "onDestroy");
 
 		super.onDestroy();
+	}
+	
+	@Override
+	public void onBackPressed(){
+		super.onBackPressed();
+		activity.overridePendingTransition(R.anim.slide_left_in, R.anim.slide_right_out);
 	}
 
 }

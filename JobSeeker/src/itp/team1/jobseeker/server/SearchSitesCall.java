@@ -104,9 +104,22 @@ public class SearchSitesCall implements DataParser {
 		}
 	}
 	
-	public static RequestParams setParamsSearch(int offset, int limit){
+	public RequestParams setParamsSearch(int offset, int limit){
 		params = new RequestParams();
 		params.put("location", String.valueOf("dundee"));
+		params.put("offset", String.valueOf(offset));
+		params.put("limit", String.valueOf(limit));
+		return params;
+	}
+	
+	public RequestParams setAllParamsSearch(String search, String location, String type, String hours, String employer, String radius, int offset, int limit) {
+		params = new RequestParams();
+		params.put("keyword", search);
+		params.put("location", location);
+		params.put("type", type);
+		params.put("hours", hours);
+		params.put("employer", employer);
+		params.put("radius", radius);
 		params.put("offset", String.valueOf(offset));
 		params.put("limit", String.valueOf(limit));
 		return params;

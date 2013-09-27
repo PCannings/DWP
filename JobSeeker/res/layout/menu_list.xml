@@ -22,6 +22,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:cacheColorHint="@null"
+        android:fadingEdge="none"
         android:scrollingCache="false"
         android:choiceMode="singleChoice"
         android:overScrollMode="never"

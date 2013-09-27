@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/white"
     android:id = "@+id/layout">
 
     <ImageView
         android:id="@+id/splash_image"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:src="@drawable/splash_image"
-        android:scaleType="centerCrop"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/jobstream"
+        android:layout_centerInParent="true"
+        android:layout_margin="30dp"
+        android:scaleType="fitCenter"/>
     
-</LinearLayout>
+    <ImageView
+        android:id="@+id/splash_dwp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dwp_logo"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:scaleType="fitCenter"/>
+    
+</RelativeLayout>

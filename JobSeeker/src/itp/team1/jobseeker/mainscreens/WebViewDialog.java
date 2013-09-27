@@ -153,6 +153,15 @@ public class WebViewDialog extends Dialog  {
 			WebViewDialog.this.dismiss();
 		}
 	}
+	
+	@Override
+	public void onBackPressed(){
+		if(System.currentTimeMillis()> timeStarted + TIME_PERIOD)
+			sendResultToListener(true);
+		else
+			sendResultToListener(false);
+		WebViewDialog.this.dismiss();
+	}
 
 	private void sendResultToListener(boolean result) {
 		if (onCompleteListener != null ) {

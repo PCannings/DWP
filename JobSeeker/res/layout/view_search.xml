@@ -27,10 +27,22 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/banner_desc"
                 android:src="@drawable/dwp_logo" />
+
+            <TextView
+                android:id="@+id/search_text_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Search for a job"
+                android:textColor="@color/medium_blue"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <!-- Title Field Row -->
 
@@ -49,6 +61,7 @@
                     android:id="@+id/search_edit_title"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:hint="keyword or title"
                     android:inputType="text" />
             </LinearLayout>
 
@@ -64,12 +77,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/search_location"
                     android:textStyle="bold" />
-                
+
                 <Spinner
-                        android:id="@+id/search_edit_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" 
-                        android:spinnerMode="dropdown"/>
+                    android:id="@+id/search_edit_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown" />
             </LinearLayout>
 
             <!-- Employer Field Row -->
@@ -81,6 +94,28 @@
                 android:orientation="vertical"
                 android:padding="0dp"
                 android:visibility="gone" >
+
+                <!-- Radius Field Row -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/search_radius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Radius: (in miles)"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/search_edit_radius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown" />
+                </LinearLayout>
+
+                <!-- Employer Field Row -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -95,8 +130,9 @@
 
                     <EditText
                         android:id="@+id/search_edit_employer"
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:hint="employer or company name"
                         android:inputType="text" />
                 </LinearLayout>
 
@@ -116,8 +152,8 @@
                     <Spinner
                         android:id="@+id/search_edit_type"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" 
-                        android:spinnerMode="dropdown"/>
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown" />
                 </LinearLayout>
 
                 <!-- Hours Field Row -->
@@ -136,11 +172,11 @@
                     <Spinner
                         android:id="@+id/search_edit_hours"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" 
-                        android:spinnerMode="dropdown"/>
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown" />
                 </LinearLayout>
 
-                <!-- Industry Field Row -->
+                <!-- Salary Field Row -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -150,14 +186,34 @@
                         android:id="@+id/search_salary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Salary: "
+                        android:text="Salary: (per annum) "
                         android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/search_edit_salary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:spinnerMode="dropdown"/>"
+                        android:spinnerMode="dropdown" />
+                </LinearLayout>
+
+                <!-- Wage Field Row -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/search_wage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wage: (per hour) "
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/search_edit_wage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown" />
                 </LinearLayout>
             </LinearLayout>
             <!-- "Search" Button -->
@@ -167,6 +223,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="Advanced Search"
@@ -180,23 +237,23 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
+                android:padding="10dp"
                 android:background="@color/medium_blue"
                 android:orientation="horizontal" >
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:padding="10dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/search_simple" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:text="@string/search"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
