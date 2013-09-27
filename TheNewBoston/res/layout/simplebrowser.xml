@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10" >
+
+        <EditText
+            android:id="@+id/etURL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" >
+        </EditText>
+
+        <Button
+            android:id="@+id/bGo"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:text="Go" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="8" >
+
+        <Button
+            android:id="@+id/bBack"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go Back a Page"
+            android:layout_weight="2"
+             />
+
+        <Button
+            android:id="@+id/bForward"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Go Forward"
+            android:layout_weight="2" />
+
+        <Button
+            android:id="@+id/bRefresh"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh Page"
+            android:layout_weight="2" />
+
+        <Button
+            android:id="@+id/bHistory"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear_History" 
+            android:layout_weight="2"/>
+    </LinearLayout>
+
+    <WebView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/wvBrowser"
+        />
+
+    
+</LinearLayout>
